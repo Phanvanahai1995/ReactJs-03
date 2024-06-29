@@ -9,22 +9,24 @@ function Products() {
 
   useEffect(() => {
     getProducts(apiKey);
-  }, []);
+  }, [apiKey]);
 
   return (
-    <div className="container mx-auto bg-slate-700 p-4 flex flex-col justify-center items-center">
-      <h1 className="text-white font-bold text-3xl">Welcome to Shop!</h1>
-      <div className="grid grid-cols-4 gap-4 items-center mt-6">
-        {products ? <ProductList /> : <Spinner />}
-      </div>
-      {productsOrder.length > 0 ? (
-        <ProductOrder />
-      ) : (
-        <div className="mt-6 text-2xl font-bold text-white">
-          Không có sản phẩm nào
+    apiKey && (
+      <div className="container mx-auto bg-slate-700 p-4 flex flex-col justify-center items-center">
+        <h1 className="text-white font-bold text-3xl">Welcome to Shop!</h1>
+        <div className="grid grid-cols-4 gap-4 items-center mt-6">
+          {products ? <ProductList /> : <Spinner />}
         </div>
-      )}
-    </div>
+        {productsOrder.length > 0 ? (
+          <ProductOrder />
+        ) : (
+          <div className="mt-6 text-2xl font-bold text-white">
+            Không có sản phẩm nào
+          </div>
+        )}
+      </div>
+    )
   );
 }
 

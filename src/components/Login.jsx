@@ -16,7 +16,7 @@ function Login({ children }) {
 
   useEffect(() => {
     setApiKey(localStorage?.getItem("apiKey"));
-    if (apiKey) getUser(apiKey);
+    getUser(apiKey);
   }, [apiKey]);
 
   return (

@@ -6,7 +6,7 @@ function ProductList() {
 
   return (
     <>
-      {products.map((product) => (
+      {products?.map((product) => (
         <ProductItem key={product._id} product={product} />
       ))}
     </>

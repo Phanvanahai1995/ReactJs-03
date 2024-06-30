@@ -91,6 +91,11 @@ function ProductProvider({ children }) {
       (pro) => pro._id === product._id
     );
 
+    if (apiKey !== localStorage.getItem("apiKey")) {
+      setApiKey(localStorage.getItem("apiKey"));
+      return;
+    }
+
     if (indexChoose === -1) {
       const productSelected = {
         _id: product._id,
@@ -129,6 +134,8 @@ function ProductProvider({ children }) {
       });
 
       if (!res.ok) {
+        localStorage?.removeItem("apiKey");
+        setApiKey(null);
         throw new Error("Order thất bại");
       } else {
         const data = await res.json();
